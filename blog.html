@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico"> -->
+
+  <title>Developter 3nity</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Custom script for this template -->
+  <script src="js/script.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">
+      <h3>Devlpr 3nity</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+
+  <!-- <main role="main" class="container">
+      <div class="jumbotron">
+        <h1>Navbar example</h1>
+        <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser's viewport.</p>
+        <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View navbar docs &raquo;</a>
+      </div>
+    </main> -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <aside class="col-md-3" style="padding-top: 10px;">
+        <div class="socail-handles">
+          <i class="fa fa-facebook-square" aria-hidden="true"></i>
+          <i class="fa fa-twitter-square" aria-hidden="true"></i>
+          <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+          <i class="fa fa-whatsapp" aria-hidden="true"></i>
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+        </div>
+
+        <div class="blogger-info">
+
+          <div class="blogger-img"><img src="images/default.jpg" style="border-radius: 50%;" alt="default"></div>
+          <div class="blogger-details">
+            <ul>
+              <li>Author: <b>Alan Joe</b></li>
+              <span class="d-flex justify-content-between">
+                <li>Total Likes: <span class="badge badge-secondary" id="totalL">0</span></li>
+                <li>Total Followers: <span class="badge badge-secondary" id="totalF">0</span></li>
+              </span>
+              <span class="d-flex justify-content-between">
+                <li>Total Post: <span class="badge badge-secondary">0</span></li>
+              </span>
+              <li>Prev Post: <b>N/A</b></li>
+              <li class="">
+                <i class="fa fa-thumbs-up" onclick="likeAuthor('1')" style="font-size: 2rem; margin-right: 30%;"
+                  aria-hidden="true"></i>
+                <span onclick="followAuthor('1')"
+                  style="padding: .2rem .5rem; border: 1px solid; cursor: pointer;">FOLLOW</span>
+              </li>
+            </ul>
+          </div>
+          <!-- author details -->
+
+        </div>
+        <!-- blogger -->
+        <form action="" method="post">
+          <div class="form-group" style="margin-top: 1.5rem;">
+            <label for="post-search">Search</label>
+            <span class="d-flex">
+              <input type="text" class="form-control" style="margin-right: .5rem;">
+              <i class="fa fa-search" style="font-size: 2rem;" aria-hidden="true"></i>
+            </span>
+          </div>
+        </form>
+      </aside>
+      <main role="main" class="col-md-9">
+        <div class="blog-title text-center">
+          <a id="user-content-devlpr-3nity" class="anchor" aria-hidden="true" href="#devlpr-3nity">
+            <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16"
+              aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+              </path>
+            </svg>
+          </a>
+          <h1>BLOG-TITLE</h1>
+        </div>
+        <div class="blog-body">
+          <div class="blog-details">
+            <ul class="d-flex justify-content-between" style="list-style-type: none;">
+              <li>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span class="totalBL">0</span> likes
+              </li>
+              <li>Date: 01/Sep./2020 3:20 PM</li>
+            </ul>
+          </div>
+          <div class="article-video" style="margin-bottom: 2rem;">
+            <iframe width="100%" height="345" src="https://www.youtube.com/embed/CKjcbwngb4s?autoplay=1">
+            </iframe>
+          </div>
+          <div class="blog-overview">
+            <h3>In this Article you'll learn:</h3>
+            <ul>
+              <li>point 1</li>
+              <li>point 1</li>
+              <li>point 1</li>
+            </ul>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo officiis distinctio rem earum! Vero,
+            culpa
+            tenetur exercitationem iure quis, minima nobis voluptatem esse cum dolorum saepe dignissimos enim debitis
+            veniam! Nostrum veritatis tenetur, harum ea, iste quos illo dolore beatae consequatur quis ipsa minus in,
+            ipsam
+            fuga ducimus magni consectetur. Earum, accusantium! Sit animi non, ea in ullam culpa rem sunt nesciunt sequi
+            at
+            debitis praesentium autem expedita laudantium ratione, incidunt voluptatibus labore doloribus quas iste,
+            molestiae aperiam. Explicabo perspiciatis vero totam nisi. Dicta sequi praesentium nihil assumenda quasi
+            quisquam, at itaque animi mollitia ad recusandae. Animi ut nostrum, aut dolore nisi soluta laudantium natus!
+            Autem quam laboriosam dolorem ex, id cumque esse consectetur iure voluptatibus ratione corrupti odit
+            perferendis
+            dignissimos commodi necessitatibus quas quidem a quod tempore? Cumque eveniet ipsam, eius, repudiandae
+            impedit
+            architecto cupiditate, iure laborum iste iusto earum maxime. Maiores, soluta minima labore optio dolor
+            voluptate
+            officia id unde obcaecati laborum sequi veritatis qui corrupti ducimus aspernatur ab dolores culpa.
+            Repudiandae
+            quibusdam fugiat placeat sequi at dolore repellendus sapiente. Repellat adipisci dicta itaque deleniti vero
+            porro officiis accusamus sed, possimus fuga saepe harum. Odit accusantium enim quasi laudantium,
+            exercitationem
+            beatae unde adipisci, id nam at quis. Inventore!
+          </p>
+          <div class="d-flex justify-content-around">
+            <div class="btn btn-primary"
+              onclick="sharePost('BLOG-ID', 'BLOG-TITLE', 'Alan Joe', '12th Sept. 2020 4:20 PM')">Share <i
+                class="fa fa-share" aria-hidden="true"></i></div>
+            <!-- share -->
+
+            <div class="rate">
+              <span>Rate</span>:
+              <i onclick="rate(this, 1)" data-star="1" class="fa fa-star-o" aria-hidden="true"></i>
+              <span class="totalBL">0</span>
+            </div>
+            <!-- rate  -->
+          </div>
+          <!-- share and rate -->
+          <i class="fa fa-comment" aria-hidden="true">0</i>
+          <form action="" method="post">
+            <div class="form-group">
+              <textarea name="comment" id="comment" cols="20" rows="5" class="form-control"
+                placeholder="Comment here!"></textarea>
+            </div>
+            <div class="d-flex justify-content-between">
+              <input type="submit" value="Comment" class="btn btn-primary">
+              <a href="#comments" style="color: black;"><i class="fa fa-arrow-down" style="font-size: 2rem;"
+                  aria-hidden="true"></i></a>
+            </div>
+          </form>
+        </div>
+        <!-- blog ends here -->
+
+        <div class="recm-posts">
+          <header class="text-center">
+            <h3>Recommended for you</h3>
+          </header>
+          <div class="container-fluid">
+            <div class="recm-post-row">
+              <div class="col-md-4 recm-post postOne">
+                <h3>BLOG-POST</h3>
+              </div>
+              <div class="col-md-4 recm-post postTwo">
+                <h3>BLOG-POST</h3>
+              </div>
+              <div class="col-md-4 recm-post postThree">
+                <h3>BLOG-POST</h3>
+              </div>
+              <div class="col-md-4 recm-post postFour">
+                <h3>BLOG-POST</h3>
+              </div>
+              <div class="col-md-4 recm-post postFive">
+                <h3>BLOG-POST</h3>
+              </div>
+              <div class="col-md-4 recm-post postSix">
+                <h3>BLOG-POST</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- recm-posts -->
+
+        <div class="comments" id="comments">
+          comments
+        </div>
+        <!-- comments -->
+
+        <footer>footer</footer>
+      </main>
+    </div>
+  </div>
+
+
+  <!-- pup ups -->
+  <div class="share-modal" id="share-modal">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3">
+          <h3>DEVLPR 3NITY</h3>
+        </div>
+        <div class="col-8" style="padding-left: 4rem;">
+          <span>
+            <a id="user-content-devlpr-3nity" class="anchor" aria-hidden="true" href="#devlpr-3nity"><svg
+                class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+                </path>
+              </svg>
+            </a>
+            <h4 id="share-blog-title"></h4>
+          </span>
+          <ul>
+            <li>By: <b id="share-blog-author"></b></li>
+            <li id="share-blog-date"></li>
+          </ul>
+        </div>
+        <div class="col-1 d-flex justify-content-center align-items-center">
+          <i class="fa fa-window-close" onclick="cloSe('share-modal')" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="roW">
+        <div class="col">
+          <div class="d-flex justify-content-around" id="share-to"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
