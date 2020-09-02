@@ -6,8 +6,8 @@
 
 /* Show it is fixed to the top */
 body {
-  padding: 0 1%;
-  padding-top: 4.5rem;
+  padding: 0;
+  padding-top: 4.1rem;
   background: white;
 }
 
@@ -19,6 +19,8 @@ body {
 }
 
 aside{
+  background: black;
+  color: white;
   ul{
     list-style-type: none;
     li{
@@ -41,11 +43,12 @@ aside{
 }
 
 main {
-  background: rgb(236, 236, 236);
+  background: #5BACDF;
+  // background: rgb(142, 205, 235);
 }
 @media (min-width:767px){
   main {
-    height: 88vh;
+    height: 89.8vh;
     overflow: auto;
   }
 }
@@ -60,7 +63,7 @@ main {
   p{
     font-size: 18px;
     line-height: 30px;
-    color: #5D6770;
+    color: #000;
     font-weight: normal;
     margin: 0 0 23px;
   }
@@ -85,8 +88,15 @@ main {
   .recm-post{
     display: inline-block;
     width: 30%;
+    height: 10rem;
     margin: 1%;
     border: 1px solid;
+    background: white;
+    text-align: center;
+    padding-top: 7%;
+  }
+  .recm-post:nth-child(odd){
+    background: grey;
   }
   .recm-post-row{
     width: 90%;
@@ -102,6 +112,7 @@ main {
     .recm-post{
       display: block;
       width: 99%;
+      padding-top: 10%;
     }
   }
 }

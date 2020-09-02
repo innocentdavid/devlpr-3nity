@@ -1,3 +1,5 @@
+const loctn = 'http://127.0.0.1:5500/devlpr-3nity/devlpr-3nity';
+
 function rate(e, star) {
     let t = $('.totalBL').text();
     if (e.classList.contains("fa-star-o") == true) {
@@ -41,3 +43,52 @@ function sharePost(id, title, author, date) {
 function cloSe(id) {
     $('#'+id).hide();
 }
+
+var getParams = function (url) {
+	var params = {};
+	var parser = document.createElement('a');
+	parser.href = url;
+	var query = parser.search.substring(1);
+	var vars = query.split('&');
+	for (var i = 0; i < vars.length; i++) {
+		var pair = vars[i].split('=');
+		params[pair[0]] = decodeURIComponent(pair[1]);
+	}
+	return params;
+};
+
+function reaD(name){
+    $('body').load(`${loctn}/posts/${name}.txt`)
+    // $.get(`posts/${name}.txt`, {}, function (content) {
+    //     let lines = content.split('\n');
+    //     console.log(`"${name}.txt" contains ${lines.length} lines`)
+    //     console.log(`First line : ${lines[0]}`)
+    // })
+    // const fs = require('fs');
+    // fs.readFile(`${loctn}/posts/${name}.txt`, 'utf-8', (err, data) => {
+    //     if (err) throw err;
+    //     console.log(data);
+    // })
+    var txtFile = new XMLHttpRequest();
+    txtFile.open("GET", `${loctn}/posts/${name}.txt`, true);
+    // console.log(txtFile);
+    txtFile.onreadystatechange = function(){
+        console.log(txtFile.responseText);
+        if (txtFile.readyState === 4) {
+            if (txtFile.status === 200) {
+                console.log(txtFile.responseText);
+                $('#postBody').html(txtFile.responseText);
+            }
+        }
+    }
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+    if ((window.location.href).includes('post')) {
+        let q = (getParams(window.location.href)).post;
+        console.log(q)
+        reaD(q);
+    }else{
+        window.location=window.location.href+'?post=1';
+    }
+})
