@@ -23,7 +23,7 @@
                 <div class="container-fluid" style="max-height: 10rem; overflow-y: auto;">
                     {% for post in posts %}
                     <div class="row">
-                        <div class="col-1">{{post.id}}</div>
+                        <div class="col-1"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></div>
                         <div class="col-6" style="width: 100%; overflow-x: auto;">{{post.title}}</div>
                         <div class="col-2" title="Edit {{post.title}}"><i onclick="editEntry('{{post.id}}')" class="fa fa-pencil" aria-hidden="true"></i></div>
                         <div class="col-2" title="Delete {{post.title}}"><i onclick="confirm('Do you want to delete {{post.title}}?')" class="fa fa-window-close" aria-hidden="true"></i></div>
