@@ -1,0 +1,27 @@
+{% extends "blog/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="container-fluid" id="postBody">
+    <style>
+        .entryListUl{
+            padding: 2rem;
+            list-style-type: none;
+        }
+        .entryListLi{
+            color: blue;
+            cursor: pointer;
+            display: inline;
+            font-size: 1.5rem;
+        }
+        .entryListLi:hover{
+            color: rgb(14, 14, 43);
+        }
+    </style>
+    {% for entry in entryList %}
+    <ul class="entryListUl">
+        <li class="entryListLi" onclick="entryListLi('{{entry}}')">{{ entry }}</li>
+    </ul>
+    {% endfor %}
+</div>
+{% endblock %}

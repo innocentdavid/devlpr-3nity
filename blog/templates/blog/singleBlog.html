@@ -1,0 +1,203 @@
+{% extends "blog/layout.html" %}
+{% load static %}
+
+{% block title %}Blog{% endblock %}
+{% block activeBlog %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid" id="postBody">
+    {% for post in post %}
+    <input type="hidden" id="postId" value="{{post.id}}">
+    <div class="row">
+        <aside class="col-md-3" style="padding-top: 10px;">
+            <div class="socail-handles">
+                <a href="{{post.author.facebook}}"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                <a href="{{post.author.twitter}}"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                <a href="{{post.author.linkedIn}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a href="{{post.author.whatsapp}}"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                <a href="{{post.author.instagram}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            </div>
+
+            <div class="blogger-info">
+
+                <div class="blogger-img"><img src="{% static 'blog/images/default.jpg' %}" style="border-radius: 50%;"
+                        alt="default"></div>
+                <div class="blogger-details">
+                    <ul>
+                        <li style="cursor: pointer; display: inline-block;"
+                            onclick="window.location='/author/{{post.author}}'">Author: <b>
+                                {{post.author}}</b></li>
+                        <span class="d-flex justify-content-between">
+                            <li>Total Likes: <span class="badge badge-secondary"
+                                    id="totalL">{{post.author.totalLikes}}</span></li>
+                            <li>Total Followers: <span class="badge badge-secondary"
+                                    id="totalF">{{post.author.totalFollowers}}</span></li>
+                        </span>
+                        <span class="d-flex justify-content-between">
+                            <li>Total Post: <span class="badge badge-secondary">{{post.author.posts}}</span></li>
+                        </span>
+                        <li style="cursor: pointer; display: inline-block;"
+                            onclick="window.location='/author/{{post.author}}#posts'">Prev Posts <i
+                                class="fa fa-arrow-left" aria-hidden="true"></i></li>
+                        <li class="">
+                            <i class="fa fa-thumbs-up" onclick="likeAuthor('{{post.author.id}}')"
+                                style="font-size: 2rem; margin-right: 30%;" aria-hidden="true"></i>
+                            <span onclick="followAuthor('{{post.author.id}}')"
+                                style="padding: .2rem .5rem; border: 1px solid; cursor: pointer;">FOLLOW</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- author details -->
+
+            </div>
+            <!-- blogger -->
+            <div class="form-group" style="margin-top: 1.5rem;">
+                <label for="post-search">Search for Author by name</label>
+                <span class="d-flex">
+                    <input type="text" id="authorSearcInp" class="form-control" style="margin-right: .5rem;">
+                    <i onclick="authorSearch()" class="fa fa-search" style="font-size: 2rem;" aria-hidden="true"></i>
+                </span>
+            </div>
+        </aside>
+        <main role="main" class="col-md-9">
+            <div class="blog-title text-center">
+                <a id="user-content-{{post}}" class="anchor" aria-hidden="true" href="#{{post}}">
+                    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16"
+                        aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+                        </path>
+                    </svg>
+                </a>
+                <h1 id="{{post}}">{{post}}</h1>
+            </div>
+            <div class="blog-body">
+                <div class="blog-details">
+                    <ul class="d-flex justify-content-between" style="list-style-type: none;">
+                        <li>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <span class="totalBL">{{post.rating}}</span> Avg. likes
+                        </li>
+                        <li>{{post.timestamp}}</li>
+                    </ul>
+                </div>
+                <div class="article-video" style="margin-bottom: 5rem;">
+                    <iframe width="100%" height="345" src="{{post.videoLink}}?autoplay=1">
+                    </iframe>
+                </div>
+                <div class="blog-md">
+                    {{ entry | safe }}
+                </div>
+                <div class="d-flex justify-content-around">
+                    <div class="btn btn-primary"
+                        onclick="sharePost('{{post.id}}', '{{post}}', '{{post.author.visitor.lname}} {{post.author}}', '12th Sept. 2020 4:20 PM')">
+                        Share <i class="fa fa-share" aria-hidden="true"></i></div>
+                    <!-- share -->
+
+                    <div class="rate btn btn-primary" onclick="rate('{{post.id}}')" data-star="1">
+                        <span>Rate</span>:
+                        <i class="rateStarBtn fa fa-star-o" aria-hidden="true"></i>
+                        <span class="totalBL">0</span>
+                    </div>
+                    <!-- rate  -->
+                </div>
+                <!-- share and rate -->
+                <br>
+                <br>
+                <i class="fa fa-comment" aria-hidden="true"> comments: <b id="commentCount">0</b></i>
+                <form action="" method="post" onsubmit="return false">
+                    <div class="form-group">
+                        <label for="vname">Name</label>
+                        <input type="text" name="vname" id="vname" class="form-control" value="Anonymous"
+                            aria-describedby="vnameHelpId">
+                        <small id="vnameHelpId" class="text-muted"><b>e.g Harry Potter</b> but its not
+                            compulsory!</small>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="comment" id="commentField" cols="20" rows="5" class="form-control"
+                            placeholder="Comment here!"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div onclick="comment('{{post.id}}')" class="btn btn-default bg-white text-dark"
+                            style="cursor: pointer;">
+                            <span>Comment</span>
+                            <span class="commentLloading"></span>
+                        </div>
+                        <a href="#comments" style="color: black;"><i class="fa fa-arrow-down" style="font-size: 2rem;"
+                                aria-hidden="true"></i></a>
+                    </div>
+                </form>
+            </div>
+            <!-- blog ends here -->
+            <hr><br>
+
+            <div class="recm-posts">
+                <div class="recm-post-header">
+                    <div class="recm-post-header">
+                        <center><h3>Recommended for you</h3></center>
+                        <hr>
+                    </div>
+                </div>
+                <div class="recm-post-row">
+                    {% for post in randPost %}
+                    <a href="#{{post.title}}" onclick="entryListLi('{{post.title}}')" class="recm-post text-center" style="color: white;">
+                        <h3 style="z-index: 5;">{{post}}</h3>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- recm-posts -->
+            <hr><br>
+
+            <!-- comments -->
+            <div class="comments" id="commentz">
+                <center>
+                    <h3>Comments</h3>
+                </center>
+                <br>
+                {% for comment in comments %}
+                <hr>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-8 col-md-9" style="padding: 0;">{{comment.body}}</div>
+                                <div class="col-4 col-md-3" style="padding: 0;">
+                                    <span class="btn-sm btn-primary" style="cursor: pointer;">Reply <i
+                                            class="fa fa-share" aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-4">{{comment.visitor}}</div>
+                                <div class="col-8">{{comment.timestamp}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+            <!-- comments -->
+        </main>
+    </div>
+    {% endfor %}
+</div>
+<style>
+    code{
+        font-size: 1rem;
+        background: rgb(212, 211, 211);
+        color: black;
+    }
+</style>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    commentCount();
+})
+</script>
+{% endblock %}

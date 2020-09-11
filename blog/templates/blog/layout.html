@@ -1,0 +1,116 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico"> -->
+
+  <title>Devlpr 3nity | {% block title %}{% endblock %}</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-top-fixed/">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+
+  <!-- Custom script for this template -->
+  <script src="{% static 'blog/js/script.js' %}"></script>
+</head>
+
+<body>
+  <input type="hidden" id="status">
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">
+          <h3>Devlpr 3nity</h3>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% block activeHome %}{% endblock %}">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item {% block activeBlog %}{% endblock %}">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item {% block activeAbout %}{% endblock %}">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item {% block activeLlr %}{% endblock %}">
+              <div id="llr">
+                <a class="nav-link" href="/logout">Logout</a>
+              </div>
+            </li>
+          </ul>
+          <form onsubmit="return false" id="searchPost" class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2 post-search" type="text" placeholder="Search by title" aria-label="Search">
+            <button onclick="searchPost()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+    {% block body %}
+    {% endblock %}
+
+    <!-- pup ups -->
+<div class="share-modal" id="share-modal">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <h3>DEVLPR 3NITY</h3>
+            </div>
+            <div class="col-8" style="padding-left: 4rem;">
+                <span>
+                    <a id="user-content-devlpr-3nity" class="anchor" aria-hidden="true" href="#devlpr-3nity"><svg
+                            class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16"
+                            aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+                            </path>
+                        </svg>
+                    </a>
+                    <h4 id="share-blog-title"></h4>
+                </span>
+                <ul>
+                    <li>By: <b id="share-blog-author"></b></li>
+                    <li id="share-blog-date"></li>
+                </ul>
+            </div>
+            <div class="col-1 d-flex justify-content-center align-items-center">
+                <i class="fa fa-window-close" onclick="cloSe('share-modal')" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="roW">
+            <div class="col">
+                <div class="d-flex justify-content-around" id="share-to"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

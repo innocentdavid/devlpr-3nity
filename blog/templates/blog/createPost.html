@@ -1,0 +1,117 @@
+{% extends "blog/layout.html" %}
+{% load static %}
+
+{% block title %}compose{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3" style="height: 89.5vh; overflow-y: auto; background: rgb(233, 231, 231);">
+            <!-- <div class="authorImg">img</div> -->
+            <div class="authorName"><center><h4>Alan Joe</h4></center></div>
+            <div class="row">
+                <div class="col-6">Total Likes</div>
+                <div class="col-6">Total Followers</div>
+                <div class="col-6">Total Post</div>
+            </div>
+            
+            <hr>
+
+            <div class="latestPosts">
+                <h5>Latest Posts</h5>
+                <hr>
+                <div class="container-fluid" style="max-height: 10rem; overflow-y: auto;">
+                    {% for post in posts %}
+                    <div class="row">
+                        <div class="col-1">{{post.id}}</div>
+                        <div class="col-6" style="width: 100%; overflow-x: auto;">{{post.title}}</div>
+                        <div class="col-2" title="Edit {{post.title}}"><i onclick="editEntry('{{post.id}}')" class="fa fa-pencil" aria-hidden="true"></i></div>
+                        <div class="col-2" title="Delete {{post.title}}"><i onclick="confirm('Do you want to delete {{post.title}}?')" class="fa fa-window-close" aria-hidden="true"></i></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="searchPost">
+                <h5>Search Post</h5>
+                <hr>
+                <div class="form-group">
+                  <label for="searchPost">Search for post</label>
+                  <input type="text" name="searchPost" id="searchPostInp" class="form-control" placeholder="search by title" aria-describedby="searchPostHelpId">
+                  <small id="searchPostHelpId" class="text-muted">e.g <b>Git</b></small>
+                </div>
+            </div>
+
+            <hr>
+
+        </div>
+
+        <hr>
+
+        <div class="col-md-9" style="height: 89.5vh; overflow: auto;">
+            <center><h1># COMPOSE</h1></center>
+            <form action="" method="GET" id="composeForm" onsubmit="return false">
+                <input type="hidden" name="fname" id="composeForm-fname">
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" name="title" id="composeForm-title" class="form-control" required placeholder="Title" aria-describedby="titleHelpId">
+                  <small id="titleHelpId" class="text-muted">Title e.g <b>Getting started with Grid System</b></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="tags">Tags</label>
+                  <input type="text" name="tags" id="composeForm-tags" class="form-control" placeholder="Separate tags with comma" aria-describedby="tagsHelpId">
+                </div>
+
+                <div class="form-group">
+                  <label for="videoLink">Featured Video Link</label>
+                  <input type="text" name="videoLink" id="composeForm-fVideo" class="form-control" placeholder="link example here" aria-describedby="videoLinkHelpId">
+                </div>
+
+                <div class="form-group">
+                  <label for="content">Content</label>
+                  <br>
+                  <small id="contentHelpId" class="text-muted">Use <code>MARKDOWN</code>, <code>HTML</code> and <code>PLAINTEXT</code></small>
+                  <h6>For ease copy the below template and open a '.md' file in your code editor and paste it there for better experience in writing md or html</h6>
+                  <textarea class="form-control" name="content" id="composeForm-content" rows="15">### In this Article you'll learn: 
+* point 1 
+* point 2 
+* point 3 
+
+Continue your content here</textarea>
+                </div>
+
+                <button onclick="composeForm()" type="submit" class="btn btn-primary mb-3">Create Post</button>
+                <button type="reset" class="btn btn-danger mb-3">Reset</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+<script>
+  status("yes", "createPost");
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      let user = $('#status')[0].value;
+      $('#composeForm-fname')[0].value=user;
+    }, 1200);
+  })
+
+  function editEntry(id) {
+    fetch ('', {
+      method: 'POST',
+      body: JSON.stringify({id:id})
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      $('#composeForm-title')[0].value=res.title;
+      $('#composeForm-tags')[0].value=res.tags;
+      $('#composeForm-fVideo')[0].value=res.fVideo;
+      $('#composeForm-content')[0].value=res.content;
+    })
+  }
+</script>
+{% endblock %}

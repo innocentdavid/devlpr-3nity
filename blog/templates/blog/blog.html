@@ -1,0 +1,11 @@
+{% load static %}
+{% block body %}
+<ul style="list-style-type: none;">
+    {% for post in post %}
+    <li onclick="window.location= '/blog/{{ post.title }}'.toLowerCase()" style="cursor: pointer; display: inline-block;"><h1>{{post.title}}</h1></li>
+    <!-- <li onclick="entryListLi('{{ post.title }}')" style="cursor: pointer;"><h1>{{post.title}}</h1></li> -->
+    {% endfor %}
+</ul>
+{% endblock %}
+
+
